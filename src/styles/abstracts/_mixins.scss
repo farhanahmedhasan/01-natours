@@ -1,0 +1,33 @@
+@mixin clearFix() {
+  &::after {
+    content: '';
+    clear: both;
+    display: table;
+  }
+}
+
+@mixin position-absolute($top, $left) {
+  position: absolute;
+  top: $top;
+  left: $left;
+}
+
+@mixin heading-primary($letSpec, $fSize) {
+  letter-spacing: $letSpec;
+  font-size: $fSize;
+  display: block;
+}
+
+@mixin animation($opacity1, $opacity2, $transform1, $transform2, $transform3) {
+  0% {
+    opacity: $opacity1;
+    transform: $transform1;
+  }
+  80% {
+    transform: $transform2;
+  }
+  100% {
+    opacity: $opacity2;
+    transform: $transform3;
+  }
+}
