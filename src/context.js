@@ -4,9 +4,15 @@ import { sliderData } from './data/data';
 const AppContext = React.createContext();
 
 export const AppProvider = ({ children }) => {
+  //States For Slide
   const [slide, setSlide] = useState(sliderData);
   const [index, setIndex] = useState(0);
 
+  //State for form
+  const [persons, setPersons] = useState([]);
+  const [person, setPerson] = useState({ name: '', email: '', tourType: '' });
+
+  //Handling Slider
   const goNextSlide = () => {
     if (slide.length - 1 <= index) setIndex(0);
     else setIndex(index + 1);
@@ -27,8 +33,26 @@ export const AppProvider = ({ children }) => {
     // eslint-disable-next-line
   }, [index]);
 
+  //handling form
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setPersons([...persons, person]);
+    setPerson({ name: '', email: '', tourType: '' });
+  };
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    const name = e.target.name;
+    const newPerson = { ...person, id: Date.now(), [name]: value };
+    setPerson(newPerson);
+  };
+
   return (
-    <AppContext.Provider value={{ slide, index, goNextSlide, goPrevSlide }}>{children}</AppContext.Provider>
+    <AppContext.Provider
+      value={{ slide, index, goNextSlide, goPrevSlide, handleSubmit, handleChange, person }}
+    >
+      {children}
+    </AppContext.Provider>
   );
 };
 

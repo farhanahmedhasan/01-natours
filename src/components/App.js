@@ -5,6 +5,7 @@ import Features from './Features';
 import Tours from './Tours';
 import Stories from './Stories';
 import Booking from './Booking';
+import Footer from './Footer';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Stories />
         <Booking />
       </main>
+      <Footer />
     </>
   );
 }
