@@ -1,8 +1,9 @@
 import React from 'react';
 import { useGlobalContext } from '../context';
 
-const Story = ({ title, info, imgSrc, name, personIndex }) => {
+const Story = React.memo(({ title, info, imgSrc, name, personIndex }) => {
   const { index, slide } = useGlobalContext();
+  // console.log('story re-render');
 
   let position = 'nextSlide';
 
@@ -16,7 +17,7 @@ const Story = ({ title, info, imgSrc, name, personIndex }) => {
     <div className='story'>
       <div className={`slide ${position}`}>
         <figure className='story__shape'>
-          <img className='story__img' src={imgSrc} alt='photo of our Customer' />
+          <img className='story__img' src={imgSrc} alt='our Customer' />
           <figcaption className='story__caption'>{name}</figcaption>
         </figure>
 
@@ -27,6 +28,6 @@ const Story = ({ title, info, imgSrc, name, personIndex }) => {
       </div>
     </div>
   );
-};
+});
 
 export default Story;

@@ -4,6 +4,7 @@ import About from './About';
 import Features from './Features';
 import Tours from './Tours';
 import Stories from './Stories';
+import Booking from './Booking';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Features />
         <Tours />
         <Stories />
+        <Booking />
       </main>
     </>
   );

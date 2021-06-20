@@ -8,6 +8,7 @@ import video2 from '../videos/video.webm';
 
 const Stories = () => {
   const { slide, goNextSlide, goPrevSlide } = useGlobalContext();
+  // console.log('container re-render');
 
   return (
     <section className='stories'>
