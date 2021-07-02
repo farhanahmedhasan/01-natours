@@ -4,8 +4,24 @@
 
   @include clearFix;
 
+  @include respond(phone) {
+    max-width: 80%;
+  }
+
+  @include respond(tab-protrait) {
+    max-width: 60%;
+  }
+
   &:not(:last-child) {
     margin-bottom: $gutter-vertical;
+
+    @include respond(phone) {
+      margin-bottom: $gutter-vertical-small;
+    }
+
+    @include respond(tab-protrait) {
+      margin-bottom: $gutter-vertical-small;
+    }
   }
 
   [class^='col-'] {
@@ -13,6 +29,23 @@
 
     &:not(:last-child) {
       margin-right: $gutter-horizontal;
+
+      @include respond(phone) {
+        margin-right: 0;
+        margin-bottom: $gutter-vertical-small;
+      }
+      @include respond(tab-protrait) {
+        margin-right: 0;
+        margin-bottom: $gutter-vertical-small;
+      }
+    }
+
+    @include respond(phone) {
+      width: 100% !important;
+    }
+
+    @include respond(tab-protrait) {
+      width: 100% !important;
     }
   }
 

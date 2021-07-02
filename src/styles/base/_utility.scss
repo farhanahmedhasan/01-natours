@@ -3,10 +3,30 @@
 }
 .mb-big {
   margin-bottom: 8rem !important;
+
+  @include respond(phone) {
+    margin-bottom: 4rem !important;
+  }
+
+  @include respond(tab-protrait) {
+    margin-bottom: 6rem !important;
+  }
 }
 .mb-small {
   margin-bottom: 1.5rem !important;
 }
 .mb-mid {
   margin-bottom: 4rem !important;
+
+  @include respond(phone) {
+    margin-bottom: 2.5rem !important;
+  }
+
+  @include respond(tab-protrait) {
+    margin-bottom: 3rem !important;
+  }
+}
+
+.d-block {
+  display: block !important;
 }

@@ -1,6 +1,10 @@
 .stories {
   position: relative;
   padding: 10rem 0 0 0;
+
+  @include respond(phone) {
+    padding: 5rem 0 0 0;
+  }
 }
 
 .slider {
@@ -19,6 +23,11 @@
   left: 50%;
   transform: translate(-50%, -50%) skewX(-8deg);
 
+  @include respond(phone) {
+    width: 100%;
+    transform: translate(-50%, -50%) skewX(0);
+  }
+
   &__shape {
     height: 15rem;
     width: 15rem;
@@ -29,6 +38,12 @@
     transform: translateX(-3rem) skewX(8deg);
     position: relative;
     overflow: hidden;
+
+    @include respond(phone) {
+      transform: translateX(-3rem) skewX(0);
+      height: 10rem;
+      width: 10rem;
+    }
   }
 
   &__img {
@@ -53,6 +68,10 @@
 
   &__text {
     transform: skewX(8deg);
+
+    @include respond(phone) {
+      transform: skewX(0);
+    }
   }
 
   &:hover &__caption {
@@ -72,6 +91,10 @@
   padding: 6rem 6rem 6rem 9rem;
   opacity: 0;
   transition: 0.4s all ease-in-out;
+
+  @include respond(phone) {
+    padding: 3rem 3rem 3rem 4rem;
+  }
 }
 
 .activeSlide {

@@ -1,11 +1,17 @@
 import React from 'react';
 import logo from '../img/logo-green-1x.png';
+import logo2x from '../img/logo-green-2x.png';
+import logoSm1x from '../img/logo-green-small-1x.png';
+import logoSm2x from '../img/logo-green-small-2x.png';
 
 const Footer = () => {
   return (
     <footer className='footer'>
       <div className='footer__logoBox center-text mb-mid'>
-        <img src={logo} alt='Natour logo' className='footer__logo' />
+        <picture className='footer__logo'>
+          <source srcSet={`${logoSm1x} 1x, ${logoSm2x} 2x`} media='(max-width: 37.5em)' />
+          <img srcSet={`${logo} 1x, ${logo2x} 2x`} alt='Natour logo' src={logo2x} />
+        </picture>
       </div>
       <div className='row'>
         <div className='col-6'>

@@ -3,6 +3,10 @@ import compositionP1 from '../img/nat-1-large.jpg';
 import compositionP2 from '../img/nat-2-large.jpg';
 import compositionP3 from '../img/nat-3-large.jpg';
 
+import compositionP1small from '../img/nat-1.jpg';
+import compositionP2small from '../img/nat-2.jpg';
+import compositionP3small from '../img/nat-3.jpg';
+
 const About = () => {
   const handleClick = (e) => {
     e.preventDefault();
@@ -29,16 +33,27 @@ const About = () => {
             adipisci cum ut asperiores aliquam
           </p>
 
-          <a href='#' className='btn btn--text' onClick={handleClick}>
+          <a href='/' className='btn btn--text' onClick={handleClick}>
             Learn More &rarr;
           </a>
         </div>
 
         <div className='col-6'>
           <div className='composition'>
-            <img src={compositionP1} alt='photo1' className='composition__photo composition__photo--1' />
-            <img src={compositionP2} alt='photo2' className='composition__photo composition__photo--2' />
-            <img src={compositionP3} alt='photo3' className='composition__photo composition__photo--3' />
+            <picture>
+              <source srcSet={`${compositionP1small} 1x, ${compositionP1} 2x`} media='(max-width: 37.5em)' />
+              <img src={compositionP1} alt='photo1' className='composition__photo composition__photo--1' />
+            </picture>
+
+            <picture>
+              <source srcSet={`${compositionP2small} 1x, ${compositionP2} 2x`} media='(max-width: 37.5em)' />
+              <img src={compositionP2} alt='photo2' className='composition__photo composition__photo--2' />
+            </picture>
+
+            <picture>
+              <source srcSet={`${compositionP3small} 1x, ${compositionP3} 2x`} media='(max-width: 37.5em)' />
+              <img src={compositionP3} alt='photo3' className='composition__photo composition__photo--3' />
+            </picture>
           </div>
         </div>
       </div>

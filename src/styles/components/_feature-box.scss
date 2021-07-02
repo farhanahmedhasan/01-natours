@@ -9,6 +9,14 @@
   & > * {
     transform: skewY(8deg);
   }
+
+  @include respond(phone) {
+    padding: 15rem 0 7rem 0;
+  }
+
+  @include respond(tab-protrait) {
+    padding: 15rem 0 7rem 0;
+  }
 }
 
 .feature-box {
@@ -19,6 +27,14 @@
   box-shadow: 0 1.5rem 4rem rgba(#000, 0.4);
   transition: 0.2s all ease-in-out;
 
+  @include respond(phone) {
+    padding: 2rem 5rem;
+  }
+
+  @include respond(tab-protrait) {
+    padding: 2rem 2rem;
+  }
+
   &:hover {
     transform: translateY(-1.5rem) scale(1.03);
     box-shadow: 0 1.5rem 4rem rgba(#000, 0.6);
@@ -26,7 +42,6 @@
 
   &__icon {
     font-size: 6rem;
-    margin-bottom: 0.5rem;
   }
 
   &__text {

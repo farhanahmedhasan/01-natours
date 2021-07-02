@@ -5,12 +5,15 @@ const AppContext = React.createContext();
 
 export const AppProvider = ({ children }) => {
   //States For Slide
+  // eslint-disable-next-line
   const [slide, setSlide] = useState(sliderData);
   const [index, setIndex] = useState(0);
 
   //State for form
-  const [persons, setPersons] = useState([]);
   const [person, setPerson] = useState({ name: '', email: '', tourType: '' });
+
+  //State for popup
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   //Handling Slider
   const goNextSlide = () => {
@@ -36,8 +39,8 @@ export const AppProvider = ({ children }) => {
   //handling form
   const handleSubmit = (e) => {
     e.preventDefault();
-    setPersons([...persons, person]);
     setPerson({ name: '', email: '', tourType: '' });
+    alert('We Got your info We will contact You soon');
   };
 
   const handleChange = (e) => {
@@ -49,7 +52,17 @@ export const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{ slide, index, goNextSlide, goPrevSlide, handleSubmit, handleChange, person }}
+      value={{
+        slide,
+        index,
+        goNextSlide,
+        goPrevSlide,
+        handleSubmit,
+        handleChange,
+        person,
+        isPopupOpen,
+        setIsPopupOpen,
+      }}
     >
       {children}
     </AppContext.Provider>

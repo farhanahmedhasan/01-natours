@@ -1,6 +1,14 @@
 import React from 'react';
+import { useGlobalContext } from '../context';
 
 const Card = ({ classM, classM2, classM3, header, details, price }) => {
+  const { setIsPopupOpen } = useGlobalContext();
+
+  const openPopup = (e) => {
+    e.preventDefault();
+    setIsPopupOpen(true);
+  };
+
   return (
     <div className='col-4'>
       <div className='card'>
@@ -26,7 +34,7 @@ const Card = ({ classM, classM2, classM3, header, details, price }) => {
               <p className='card__price-only'>Only</p>
               <p className='card__price-value'>${price}</p>
             </div>
-            <a href='/f' className='btn btn--white'>
+            <a href='/f' className='btn btn--white btn--card' onClick={openPopup}>
               Book Now
             </a>
           </div>

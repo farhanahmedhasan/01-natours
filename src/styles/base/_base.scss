@@ -7,8 +7,20 @@
 }
 
 html {
-  font-size: 62.5%;
+  font-size: 62.5%; // 1rem = 10px .. 10px/16px = 62.5%
   scroll-behavior: smooth;
+
+  @include respond(tab-protrait) {
+    font-size: 50%; //1rem = 8px .. 8px/16px = 50%
+  }
+
+  @include respond(tab-landscape) {
+    font-size: 52.5%; //1rem = 9px .. 9px/16px = 52.5%
+  }
+
+  @include respond(big-desktop) {
+    font-size: 81.25%; //1rem = 13px .. 13px/16px = 81.25%
+  }
 }
 
 body {

@@ -4,17 +4,38 @@
   font-size: 1.4rem;
   padding: 8rem 0;
 
+  @include respond(phone) {
+    padding: 6rem 0;
+  }
+  @include respond(tab-protrait) {
+    padding: 6rem 0;
+  }
+
   &__logoBox {
   }
 
   &__logo {
     width: 15rem;
+
+    @include respond(phone) {
+      width: 13rem;
+    }
   }
 
   &__navigation {
     border-top: 1px solid $color-text-dark-2;
     display: inline-block;
     padding-top: 2rem;
+
+    @include respond(phone) {
+      width: 100%;
+      text-align: center;
+    }
+
+    @include respond(tab-protrait) {
+      width: 100%;
+      text-align: center;
+    }
   }
 
   &__list {
@@ -50,5 +71,15 @@
     width: 80%;
     float: right;
     padding-top: 2rem;
+
+    @include respond(phone) {
+      width: 100%;
+      text-align: center;
+    }
+
+    @include respond(tab-protrait) {
+      width: 100%;
+      text-align: center;
+    }
   }
 }

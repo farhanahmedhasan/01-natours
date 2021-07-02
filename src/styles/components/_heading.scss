@@ -6,11 +6,20 @@
   &--main {
     @include heading-primary(3rem, 5.75rem);
     animation: moveInLeft 1s ease-in-out;
+
+    @include respond(phone) {
+      letter-spacing: 1rem;
+      font-size: 4rem;
+    }
   }
 
   &--sub {
     @include heading-primary(1.35rem, 1.6rem);
     animation: moveInRight 1s ease-in-out;
+
+    @include respond(phone) {
+      letter-spacing: 1rem;
+    }
   }
 }
 
@@ -28,6 +37,14 @@
   &:hover {
     transform: skew(5deg) skewY(0.5deg) scale(1.05);
     text-shadow: 1px 2px 2rem #0000006b;
+  }
+
+  @include respond(phone) {
+    font-size: 2.5rem;
+  }
+
+  @include respond(tab-protrait) {
+    font-size: 3rem;
   }
 }
 
