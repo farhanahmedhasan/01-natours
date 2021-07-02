@@ -147,7 +147,7 @@
     font-weight: 100;
   }
 
-  @include respond(tab-protrait) {
+  @media only screen and (max-width: 56.25em), only screen and (hover: none) {
     box-shadow: 0 1.5rem 2rem rgba(#000, 0.4);
     height: auto;
     border-radius: 3px;

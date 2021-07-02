@@ -13,6 +13,10 @@ const Popup = () => {
     setIsPopupOpen(false);
   };
 
+  const ScrollOnBook = (e) => {
+    setIsPopupOpen(false);
+  };
+
   return (
     <>
       <div
@@ -39,9 +43,11 @@ const Popup = () => {
             recusandae magnam nemo modi repellendus harum tempore voluptates veritatis, praesentium soluta.
           </p>
 
-          <a href='/book' className='btn btn--green d-block center-text'>
-            Book Now
-          </a>
+          <div onClick={ScrollOnBook}>
+            <a href='#section-booking' className='btn btn--green d-block center-text'>
+              Book Now
+            </a>
+          </div>
         </div>
       </div>
     </>

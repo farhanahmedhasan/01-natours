@@ -8,12 +8,8 @@ import compositionP2small from '../img/nat-2.jpg';
 import compositionP3small from '../img/nat-3.jpg';
 
 const About = () => {
-  const handleClick = (e) => {
-    e.preventDefault();
-  };
-
   return (
-    <section className='about'>
+    <section id='section-about' className='about'>
       <div className='center-text mb-big'>
         <h2 className='heading-secondary'>Exiting tours for adventurous people</h2>
       </div>
@@ -33,7 +29,7 @@ const About = () => {
             adipisci cum ut asperiores aliquam
           </p>
 
-          <a href='/' className='btn btn--text' onClick={handleClick}>
+          <a href='#section-booking' className='btn btn--text'>
             Learn More &rarr;
           </a>
         </div>

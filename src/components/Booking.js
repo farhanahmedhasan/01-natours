@@ -5,7 +5,7 @@ const Booking = () => {
   const { handleChange, handleSubmit, person } = useGlobalContext();
 
   return (
-    <div className='booking'>
+    <div className='booking' id='section-booking'>
       <div className='row'>
         <div className='book'>
           <div className='book__form'>

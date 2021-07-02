@@ -35,3 +35,8 @@ body {
   -webkit-background-clip: text;
   color: transparent;
 }
+
+::selection {
+  color: $color-white;
+  background-color: $color-primary;
+}

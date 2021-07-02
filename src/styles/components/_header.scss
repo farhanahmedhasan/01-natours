@@ -5,7 +5,8 @@
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   position: relative;
 
-  @media (min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em) {
+  @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em),
+    only screen and (min-width: 125em) {
     background: linear-gradient(to right bottom, #7ed56fb7, #28b485b4),
       url('../../img/hero.jpg') no-repeat center center/cover;
   }

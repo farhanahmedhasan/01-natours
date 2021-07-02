@@ -10,7 +10,7 @@ const Stories = () => {
   const { slide, goNextSlide, goPrevSlide } = useGlobalContext();
 
   return (
-    <section className='stories'>
+    <section className='stories' id='section-stories'>
       <div className='bgVideo'>
         <video className='bgVideo__content' autoPlay loop muted>
           <source src={video1} />
