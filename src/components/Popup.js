@@ -1,56 +1,65 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { FaTimes } from 'react-icons/fa';
-
-import { useGlobalContext } from '../context';
-import { closePopupBtn } from '../context';
 
 import tourPhoto1 from '../img/nat-8.jpg';
 import tourPhoto2 from '../img/nat-9.jpg';
 
-const Popup = () => {
-  console.log('rendering popup');
+import { useGlobalContext } from '../context';
+import { closePopupBtn } from '../context';
 
+const Popup = () => {
   const [state, dispatch] = useGlobalContext();
 
-  const ScrollOnBook = (e) => {
-    closePopupBtn(dispatch);
-  };
+  return useMemo(() => {
+    //Expensive task--uncomment and put is outside useMemo and check what happens
+    // let sum = 0;
+    // for (let i = 0; i < 1000000000; i++) {
+    //   sum += i;
+    // }
+    // console.log(sum);
 
-  return (
-    <>
-      <div
-        className={state.isPopupOpen ? 'overlay obverlayActive' : 'overlay'}
-        onClick={() => closePopupBtn(dispatch)}
-      ></div>
+    console.log('rendering popup');
 
-      <div className={state.isPopupOpen ? 'popup popupActive' : 'popup'}>
-        <div className='popup__left'>
-          <img src={tourPhoto1} alt='beautiful tour' className='popup__img' />
-          <img src={tourPhoto2} alt='beautiful tour' className='popup__img' />
-        </div>
+    const ScrollOnBook = () => {
+      closePopupBtn(dispatch);
+    };
 
-        <div className='popup__right'>
-          <FaTimes className='popup__close' onClick={() => closePopupBtn(dispatch)} />
+    return (
+      <>
+        <div
+          className={state.isPopupOpen ? 'overlay obverlayActive' : 'overlay'}
+          onClick={() => closePopupBtn(dispatch)}
+        ></div>
 
-          <h2 className='heading-secondary mb-small'>Start Booking Now</h2>
-          <h3 className='heading-tertiary mb-small'>What are You Waiting for &ndash;</h3>
+        <div className={state.isPopupOpen ? 'popup popupActive' : 'popup'}>
+          <div className='popup__left'>
+            <img src={tourPhoto1} alt='beautiful tour' className='popup__img' />
+            <img src={tourPhoto2} alt='beautiful tour' className='popup__img' />
+          </div>
 
-          <p className='popup__text'>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo neque velit impedit perspiciatis
-            repellendus enim rem corrupti recusandae, sequi tempore alias. Quod voluptas accusantium aut
-            voluptates ut, in deleniti inventore rem ad unde? Laudantium, aut, atque dolorem hic impedit
-            recusandae magnam nemo modi repellendus harum tempore voluptates veritatis, praesentium soluta.
-          </p>
+          <div className='popup__right'>
+            <FaTimes className='popup__close' onClick={() => closePopupBtn(dispatch)} />
 
-          <div onClick={ScrollOnBook}>
-            <a href='#section-booking' className='btn btn--green d-block center-text'>
-              Book Now
-            </a>
+            <h2 className='heading-secondary mb-small'>Start Booking Now</h2>
+            <h3 className='heading-tertiary mb-small'>What are You Waiting for &ndash;</h3>
+
+            <p className='popup__text'>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo neque velit impedit perspiciatis
+              repellendus enim rem corrupti recusandae, sequi tempore alias. Quod voluptas accusantium aut
+              voluptates ut, in deleniti inventore rem ad unde? Laudantium, aut, atque dolorem hic impedit
+              recusandae magnam nemo modi repellendus harum tempore voluptates veritatis, praesentium soluta.
+            </p>
+
+            <div onClick={ScrollOnBook}>
+              <a href='#section-booking' className='btn btn--green d-block center-text'>
+                Book Now
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  }, [dispatch, state.isPopupOpen]);
 };
 
 export default Popup;
