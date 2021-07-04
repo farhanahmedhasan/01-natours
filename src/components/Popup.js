@@ -2,36 +2,35 @@ import React from 'react';
 import { FaTimes } from 'react-icons/fa';
 
 import { useGlobalContext } from '../context';
+import { closePopupBtn } from '../context';
 
 import tourPhoto1 from '../img/nat-8.jpg';
 import tourPhoto2 from '../img/nat-9.jpg';
 
 const Popup = () => {
-  const { setIsPopupOpen, isPopupOpen } = useGlobalContext();
+  console.log('rendering popup');
 
-  const closePopupBtn = () => {
-    setIsPopupOpen(false);
-  };
+  const [state, dispatch] = useGlobalContext();
 
   const ScrollOnBook = (e) => {
-    setIsPopupOpen(false);
+    closePopupBtn(dispatch);
   };
 
   return (
     <>
       <div
-        className={isPopupOpen ? 'overlay obverlayActive' : 'overlay'}
-        onClick={() => setIsPopupOpen(false)}
+        className={state.isPopupOpen ? 'overlay obverlayActive' : 'overlay'}
+        onClick={() => closePopupBtn(dispatch)}
       ></div>
 
-      <div className={isPopupOpen ? 'popup popupActive' : 'popup'}>
+      <div className={state.isPopupOpen ? 'popup popupActive' : 'popup'}>
         <div className='popup__left'>
           <img src={tourPhoto1} alt='beautiful tour' className='popup__img' />
           <img src={tourPhoto2} alt='beautiful tour' className='popup__img' />
         </div>
 
         <div className='popup__right'>
-          <FaTimes className='popup__close' onClick={closePopupBtn} />
+          <FaTimes className='popup__close' onClick={() => closePopupBtn(dispatch)} />
 
           <h2 className='heading-secondary mb-small'>Start Booking Now</h2>
           <h3 className='heading-tertiary mb-small'>What are You Waiting for &ndash;</h3>

@@ -2,13 +2,13 @@ import React from 'react';
 import { useGlobalContext } from '../context';
 
 const Story = ({ title, info, imgSrc, name, personIndex }) => {
-  const { index, slide } = useGlobalContext();
+  const [state] = useGlobalContext();
 
   let position = 'nextSlide';
 
-  if (index === personIndex) position = 'activeSlide';
+  if (state.index === personIndex) position = 'activeSlide';
 
-  if ((index === 0 && personIndex === slide.length - 1) || personIndex === index - 1) {
+  if ((state.index === 0 && personIndex === state.slide.length - 1) || personIndex === state.index - 1) {
     position = 'prevSlide';
   }
 

@@ -1,74 +1,128 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useReducer } from 'react';
 import { sliderData } from './data/data';
 
 const AppContext = React.createContext();
 
-export const AppProvider = ({ children }) => {
-  //States For Slide
-  // eslint-disable-next-line
-  const [slide, setSlide] = useState(sliderData);
-  const [index, setIndex] = useState(0);
+const initialState = {
+  index: 0,
+  slide: sliderData,
+  isPopupOpen: false,
+  person: { name: '', email: '', tourType: '' },
+};
 
-  //State for form
-  const [person, setPerson] = useState({ name: '', email: '', tourType: '' });
+const reducer = (state, action) => {
+  if (action.type === 'NEXT_SLIDE') {
+    if (state.slide.length - 1 <= state.index) {
+      return {
+        ...state,
+        index: 0,
+      };
+    } else {
+      return {
+        ...state,
+        index: state.index + 1,
+      };
+    }
+  }
 
-  //State for popup
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  if (action.type === 'PREV_SLIDE') {
+    if (state.index <= 0) {
+      return {
+        ...state,
+        index: state.slide.length - 1,
+      };
+    } else {
+      return {
+        ...state,
+        index: state.index - 1,
+      };
+    }
+  }
 
-  //Handling Slider
-  const goNextSlide = () => {
-    if (slide.length - 1 <= index) setIndex(0);
-    else setIndex(index + 1);
-  };
+  if (action.type === 'OPEN_POPUP') {
+    return {
+      ...state,
+      isPopupOpen: true,
+    };
+  }
 
-  const goPrevSlide = () => {
-    if (index <= 0) setIndex(slide.length - 1);
-    else setIndex(index - 1);
-  };
+  if (action.type === 'CLOSE_POPUP') {
+    return {
+      ...state,
+      isPopupOpen: false,
+    };
+  }
+
+  if (action.type === 'FILLING_FORM') {
+    const value = action.event.target.value;
+    const name = action.event.target.name;
+    const newPerson = { ...state.person, id: Date.now(), [name]: value };
+    return {
+      ...state,
+      person: newPerson,
+    };
+  }
+
+  if (action.type === 'SUBMIT_FORM') {
+    return {
+      ...state,
+      person: { name: '', email: '', tourType: '' },
+    };
+  }
+
+  throw new Error(`No matched action.type found in your reducer Funtion`);
+};
+
+const AppProvider = (children) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const value = [state, dispatch];
 
   useEffect(() => {
     const slider = setInterval(() => {
-      goNextSlide();
-    }, 6000);
+      dispatch({ type: 'NEXT_SLIDE' });
+    }, 8000);
     return () => {
       clearInterval(slider);
     };
-    // eslint-disable-next-line
-  }, [index]);
+  }, []);
 
-  //handling form
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setPerson({ name: '', email: '', tourType: '' });
-    alert('We Got your info We will contact You soon');
-  };
-
-  const handleChange = (e) => {
-    const value = e.target.value;
-    const name = e.target.name;
-    const newPerson = { ...person, id: Date.now(), [name]: value };
-    setPerson(newPerson);
-  };
-
-  return (
-    <AppContext.Provider
-      value={{
-        slide,
-        index,
-        goNextSlide,
-        goPrevSlide,
-        handleSubmit,
-        handleChange,
-        person,
-        isPopupOpen,
-        setIsPopupOpen,
-      }}
-    >
-      {children}
-    </AppContext.Provider>
-  );
+  return <AppContext.Provider value={value} {...children} />;
 };
 
-export const useGlobalContext = () => {
-  return useContext(AppContext);
+const useGlobalContext = () => {
+  const newContext = useContext(AppContext);
+  if (newContext === undefined) {
+    throw new Error(`useGlobalContext must be used within a AppProvider`);
+  }
+  return newContext;
+};
+
+//Handling Slider
+const goNextSlide = (dispatch) => dispatch({ type: 'NEXT_SLIDE' });
+const goPrevSlide = (dispatch) => dispatch({ type: 'PREV_SLIDE' });
+
+//Handling Popup
+const openPopup = (dispatch) => dispatch({ type: 'OPEN_POPUP' });
+const closePopupBtn = (dispatch) => dispatch({ type: 'CLOSE_POPUP' });
+
+//Handling Form
+const handleChange = (dispatch, event) => dispatch({ type: 'FILLING_FORM', event });
+
+const handleSubmit = (dispatch, e) => {
+  e.preventDefault();
+  alert('We Got your info We will contact You soon');
+
+  dispatch({ type: 'SUBMIT_FORM' });
+};
+
+export {
+  AppProvider,
+  useGlobalContext,
+  goNextSlide,
+  goPrevSlide,
+  openPopup,
+  closePopupBtn,
+  handleChange,
+  handleSubmit,
 };

@@ -1,15 +1,18 @@
 import React from 'react';
-import { useGlobalContext } from '../context';
+
+import { useGlobalContext, handleChange, handleSubmit } from '../context';
 
 const Booking = () => {
-  const { handleChange, handleSubmit, person } = useGlobalContext();
+  console.log('rendering boking');
+
+  const [state, dispatch] = useGlobalContext();
 
   return (
     <div className='booking' id='section-booking'>
       <div className='row'>
         <div className='book'>
           <div className='book__form'>
-            <form className='form' onSubmit={handleSubmit}>
+            <form className='form' onSubmit={(e) => handleSubmit(dispatch, e)}>
               <div className=' mb-mid'>
                 <h2 className='heading-secondary'>Start Booking Now</h2>
               </div>
@@ -22,8 +25,8 @@ const Booking = () => {
                   name='name'
                   placeholder='Full Name'
                   required
-                  value={person.name}
-                  onChange={handleChange}
+                  value={state.person.name}
+                  onChange={(e) => handleChange(dispatch, e)}
                 />
 
                 <label htmlFor='fullName' className='form__label'>
@@ -39,8 +42,8 @@ const Booking = () => {
                   name='email'
                   placeholder='Email Address'
                   required
-                  value={person.email}
-                  onChange={handleChange}
+                  value={state.person.email}
+                  onChange={(e) => handleChange(dispatch, e)}
                 />
 
                 <label htmlFor='email' className='form__label'>
@@ -56,7 +59,7 @@ const Booking = () => {
                     id='small'
                     name='tourType'
                     value='Small Tour Group'
-                    onChange={handleChange}
+                    onChange={(e) => handleChange(dispatch, e)}
                   />
 
                   <label htmlFor='small'>
@@ -72,7 +75,7 @@ const Booking = () => {
                     id='Big'
                     name='tourType'
                     value='Big Tour Group'
-                    onChange={handleChange}
+                    onChange={(e) => handleChange(dispatch, e)}
                   />
 
                   <label htmlFor='Big'>

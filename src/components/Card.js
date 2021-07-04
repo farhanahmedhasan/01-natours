@@ -1,13 +1,12 @@
 import React from 'react';
+
 import { useGlobalContext } from '../context';
+import { openPopup } from '../context';
 
 const Card = ({ classM, classM2, classM3, header, details, price }) => {
-  const { setIsPopupOpen } = useGlobalContext();
+  console.log('rendering each single card');
 
-  const openPopup = (e) => {
-    e.preventDefault();
-    setIsPopupOpen(true);
-  };
+  const [, dispatch] = useGlobalContext();
 
   return (
     <div className='col-4'>
@@ -34,7 +33,14 @@ const Card = ({ classM, classM2, classM3, header, details, price }) => {
               <p className='card__price-only'>Only</p>
               <p className='card__price-value'>${price}</p>
             </div>
-            <a href='/f' className='btn btn--white btn--card' onClick={openPopup}>
+            <a
+              href='/f'
+              className='btn btn--white btn--card'
+              onClick={(e) => {
+                e.preventDefault();
+                openPopup(dispatch);
+              }}
+            >
               Book Now
             </a>
           </div>
@@ -44,4 +50,4 @@ const Card = ({ classM, classM2, classM3, header, details, price }) => {
   );
 };
 
-export default Card;
+export default React.memo(Card);
