@@ -6,7 +6,10 @@ const Booking = () => {
   const [state, dispatch] = useGlobalContext();
 
   return React.useMemo(() => {
-    console.log('rendering booking');
+    const handleAllFormChange = (e) => {
+      handleChange(dispatch, e);
+    };
+
     return (
       <div className='booking' id='section-booking'>
         <div className='row'>
@@ -26,7 +29,7 @@ const Booking = () => {
                     placeholder='Full Name'
                     required
                     value={state.person.name}
-                    onChange={(e) => handleChange(dispatch, e)}
+                    onChange={handleAllFormChange}
                   />
 
                   <label htmlFor='fullName' className='form__label'>
@@ -43,7 +46,7 @@ const Booking = () => {
                     placeholder='Email Address'
                     required
                     value={state.person.email}
-                    onChange={(e) => handleChange(dispatch, e)}
+                    onChange={handleAllFormChange}
                   />
 
                   <label htmlFor='email' className='form__label'>
@@ -59,7 +62,7 @@ const Booking = () => {
                       id='small'
                       name='tourType'
                       value='Small Tour Group'
-                      onChange={(e) => handleChange(dispatch, e)}
+                      onChange={handleAllFormChange}
                     />
 
                     <label htmlFor='small'>
@@ -75,7 +78,7 @@ const Booking = () => {
                       id='Big'
                       name='tourType'
                       value='Big Tour Group'
-                      onChange={(e) => handleChange(dispatch, e)}
+                      onChange={handleAllFormChange}
                     />
 
                     <label htmlFor='Big'>
@@ -96,8 +99,7 @@ const Booking = () => {
         </div>
       </div>
     );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.person.email, state.person.name]);
+  }, [state.person.email, state.person.name, dispatch]);
 };
 
 export default Booking;

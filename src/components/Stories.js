@@ -13,7 +13,6 @@ const Stories = () => {
   const [state, dispatch] = useGlobalContext();
 
   return React.useMemo(() => {
-    console.log('rendering whole slider section');
     return (
       <section className='stories' id='section-stories'>
         <div className='bgVideo'>

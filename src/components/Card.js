@@ -7,7 +7,6 @@ const Card = ({ classM, classM2, classM3, header, details, price }) => {
   const [, dispatch] = useGlobalContext();
 
   return React.useMemo(() => {
-    console.log('rendering each single card');
     return (
       <div className='col-4'>
         <div className='card'>

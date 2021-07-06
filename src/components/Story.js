@@ -5,8 +5,6 @@ const Story = ({ title, info, imgSrc, name, personIndex }) => {
   const [state] = useGlobalContext();
 
   return React.useMemo(() => {
-    console.log('rendering each slider');
-
     let position = 'nextSlide';
 
     if (state.index === personIndex) position = 'activeSlide';
