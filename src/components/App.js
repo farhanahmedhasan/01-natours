@@ -6,7 +6,7 @@ import Tours from './Tours';
 import Stories from './Stories';
 import Booking from './Booking';
 import Footer from './Footer';
-import Popup from './Popup';
+
 import Navigation from './Navigation';
 
 function App() {
@@ -22,7 +22,6 @@ function App() {
         <Booking />
       </main>
       <Footer />
-      <Popup />
     </>
   );
 }

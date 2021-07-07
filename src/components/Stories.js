@@ -6,22 +6,18 @@ import { useGlobalContext } from '../context';
 import { goNextSlide } from '../context';
 import { goPrevSlide } from '../context';
 
-import video1 from '../videos/video.mp4';
-import video2 from '../videos/video.webm';
-
 const Stories = () => {
   const [state, dispatch] = useGlobalContext();
+  const LoadVideo = React.lazy(() => import(/* webpackPrefetch: true */ './LoadVideo'));
 
   return React.useMemo(() => {
     return (
       <section className='stories' id='section-stories'>
-        <div className='bgVideo'>
-          <video className='bgVideo__content' autoPlay loop muted>
-            <source src={video1} />
-            <source src={video2} />
-            Your Browser Doesn't support The Video
-          </video>
-        </div>
+        <React.Suspense
+          fallback={<div style={{ visibility: 'hidden', backgroundColor: '#fff' }}>'YO m loading</div>}
+        >
+          <LoadVideo />
+        </React.Suspense>
 
         <div className='slider'>
           <div className='center-text mb-big'>
