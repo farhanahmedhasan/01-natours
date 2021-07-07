@@ -4,6 +4,8 @@ import logo2x from '../img/logo-green-2x.png';
 import logoSm1x from '../img/logo-green-small-1x.png';
 import logoSm2x from '../img/logo-green-small-2x.png';
 
+import LazyLoad from 'react-lazyload';
+
 const Footer = () => {
   const Popup = React.lazy(() => import(/* webpackPrefetch: true */ './Popup'));
 
@@ -11,10 +13,12 @@ const Footer = () => {
     <>
       <footer className='footer'>
         <div className='footer__logoBox center-text mb-mid'>
-          <picture className='footer__logo'>
-            <source srcSet={`${logoSm1x} 1x, ${logoSm2x} 2x`} media='(max-width: 37.5em)' />
-            <img srcSet={`${logo} 1x, ${logo2x} 2x`} alt='Natour logo' src={logo2x} />
-          </picture>
+          <LazyLoad>
+            <picture className='footer__logo'>
+              <source srcSet={`${logoSm1x} 1x, ${logoSm2x} 2x`} media='(max-width: 37.5em)' />
+              <img srcSet={`${logo} 1x, ${logo2x} 2x`} alt='Natour logo' src={logo2x} />
+            </picture>
+          </LazyLoad>
         </div>
         <div className='row'>
           <div className='col-6'>

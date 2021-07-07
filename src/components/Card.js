@@ -3,6 +3,8 @@ import React from 'react';
 import { useGlobalContext } from '../context';
 import { openPopup } from '../context';
 
+import LazyLoad from 'react-lazyload';
+
 const Card = ({ classM, classM2, classM3, header, details, price }) => {
   const [, dispatch] = useGlobalContext();
 
@@ -11,7 +13,9 @@ const Card = ({ classM, classM2, classM3, header, details, price }) => {
       <div className='col-4'>
         <div className='card'>
           <div className='card__side card__side--front'>
-            <div className={`card__picture ${classM2}`}></div>
+            <LazyLoad>
+              <div className={`card__picture ${classM2}`}></div>
+            </LazyLoad>
 
             <h4 className='card__header'>
               <span className={`card__header--span ${classM3}`}>{header}</span>

@@ -25,6 +25,7 @@ const Popup = () => {
         <div className={state.isPopupOpen ? 'popup popupActive' : 'popup'}>
           <div className='popup__left'>
             <img src={tourPhoto1} alt='beautiful tour' className='popup__img' />
+
             <img src={tourPhoto2} alt='beautiful tour' className='popup__img' />
           </div>
 

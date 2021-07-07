@@ -7,6 +7,8 @@ import compositionP1small from '../img/nat-1.jpg';
 import compositionP2small from '../img/nat-2.jpg';
 import compositionP3small from '../img/nat-3.jpg';
 
+import LazyLoad from 'react-lazyload';
+
 const About = () => {
   return (
     <section id='section-about' className='about'>
@@ -36,20 +38,35 @@ const About = () => {
 
         <div className='col-6'>
           <div className='composition'>
-            <picture>
-              <source srcSet={`${compositionP1small} 1x, ${compositionP1} 2x`} media='(max-width: 37.5em)' />
-              <img src={compositionP1} alt='photo1' className='composition__photo composition__photo--1' />
-            </picture>
+            <LazyLoad offset={100}>
+              <picture>
+                <source
+                  srcSet={`${compositionP1small} 1x, ${compositionP1} 2x`}
+                  media='(max-width: 37.5em)'
+                />
+                <img src={compositionP1} alt='photo1' className='composition__photo composition__photo--1' />
+              </picture>
+            </LazyLoad>
 
-            <picture>
-              <source srcSet={`${compositionP2small} 1x, ${compositionP2} 2x`} media='(max-width: 37.5em)' />
-              <img src={compositionP2} alt='photo2' className='composition__photo composition__photo--2' />
-            </picture>
+            <LazyLoad offset={100}>
+              <picture>
+                <source
+                  srcSet={`${compositionP2small} 1x, ${compositionP2} 2x`}
+                  media='(max-width: 37.5em)'
+                />
+                <img src={compositionP2} alt='photo2' className='composition__photo composition__photo--2' />
+              </picture>
+            </LazyLoad>
 
-            <picture>
-              <source srcSet={`${compositionP3small} 1x, ${compositionP3} 2x`} media='(max-width: 37.5em)' />
-              <img src={compositionP3} alt='photo3' className='composition__photo composition__photo--3' />
-            </picture>
+            <LazyLoad offset={100}>
+              <picture>
+                <source
+                  srcSet={`${compositionP3small} 1x, ${compositionP3} 2x`}
+                  media='(max-width: 37.5em)'
+                />
+                <img src={compositionP3} alt='photo3' className='composition__photo composition__photo--3' />
+              </picture>
+            </LazyLoad>
           </div>
         </div>
       </div>
