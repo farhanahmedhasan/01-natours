@@ -38,7 +38,7 @@ const About = () => {
 
         <div className='col-6'>
           <div className='composition'>
-            <LazyLoad offset={100}>
+            <LazyLoad offset={200}>
               <picture>
                 <source
                   srcSet={`${compositionP1small} 1x, ${compositionP1} 2x`}
@@ -46,9 +46,7 @@ const About = () => {
                 />
                 <img src={compositionP1} alt='photo1' className='composition__photo composition__photo--1' />
               </picture>
-            </LazyLoad>
 
-            <LazyLoad offset={100}>
               <picture>
                 <source
                   srcSet={`${compositionP2small} 1x, ${compositionP2} 2x`}
@@ -56,9 +54,7 @@ const About = () => {
                 />
                 <img src={compositionP2} alt='photo2' className='composition__photo composition__photo--2' />
               </picture>
-            </LazyLoad>
 
-            <LazyLoad offset={100}>
               <picture>
                 <source
                   srcSet={`${compositionP3small} 1x, ${compositionP3} 2x`}

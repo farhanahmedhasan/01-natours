@@ -14,7 +14,7 @@ const Stories = () => {
     return (
       <section className='stories' id='section-stories'>
         <React.Suspense
-          fallback={<div style={{ visibility: 'hidden', backgroundColor: '#fff' }}>'YO m loading</div>}
+          fallback={<div style={{ visibility: 'hidden', backgroundColor: '#fff' }}>'loading..</div>}
         >
           <LoadVideo />
         </React.Suspense>
