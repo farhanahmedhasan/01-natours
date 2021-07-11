@@ -27,23 +27,4 @@ const goPrevSlide = (dispatch) => dispatch({ type: 'PREV_SLIDE' });
 const openPopup = (dispatch) => dispatch({ type: 'OPEN_POPUP' });
 const closePopupBtn = (dispatch) => dispatch({ type: 'CLOSE_POPUP' });
 
-//Handling Form
-const handleChange = (dispatch, event) => dispatch({ type: 'FILLING_FORM', event });
-
-const handleSubmit = (dispatch, e) => {
-  e.preventDefault();
-  alert('We Got your info We will contact You soon');
-
-  dispatch({ type: 'SUBMIT_FORM' });
-};
-
-export {
-  AppProvider,
-  useGlobalContext,
-  goNextSlide,
-  goPrevSlide,
-  openPopup,
-  closePopupBtn,
-  handleChange,
-  handleSubmit,
-};
+export { AppProvider, useGlobalContext, goNextSlide, goPrevSlide, openPopup, closePopupBtn };

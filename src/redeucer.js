@@ -4,7 +4,6 @@ const initialState = {
   index: 0,
   slide: sliderData,
   isPopupOpen: false,
-  person: { name: '', email: '', tourType: '' },
 };
 
 const reducer = (state, action) => {
@@ -47,23 +46,6 @@ const reducer = (state, action) => {
     return {
       ...state,
       isPopupOpen: false,
-    };
-  }
-
-  if (action.type === 'FILLING_FORM') {
-    const value = action.event.target.value;
-    const name = action.event.target.name;
-    const newPerson = { ...state.person, id: Date.now(), [name]: value };
-    return {
-      ...state,
-      person: newPerson,
-    };
-  }
-
-  if (action.type === 'SUBMIT_FORM') {
-    return {
-      ...state,
-      person: { name: '', email: '', tourType: '' },
     };
   }
 
