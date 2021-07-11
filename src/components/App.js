@@ -10,6 +10,7 @@ import Footer from './Footer';
 import Navigation from './Navigation';
 
 function App() {
+  const Popup = React.lazy(() => import(/* webpackPrefetch: true */ './Popup'));
   return (
     <>
       <Navigation />
@@ -22,6 +23,9 @@ function App() {
         <Booking />
       </main>
       <Footer />
+      <React.Suspense fallback={<div style={{ display: 'none' }}>Loading...</div>}>
+        <Popup />
+      </React.Suspense>
     </>
   );
 }

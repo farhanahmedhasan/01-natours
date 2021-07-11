@@ -7,8 +7,6 @@ import logoSm2x from '../img/logo-green-small-2x.png';
 import LazyLoad from 'react-lazyload';
 
 const Footer = () => {
-  const Popup = React.lazy(() => import(/* webpackPrefetch: true */ './Popup'));
-
   return (
     <>
       <footer className='footer'>
@@ -70,10 +68,6 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-
-      <React.Suspense fallback={<div style={{ display: 'none' }}>Loading...</div>}>
-        <Popup />
-      </React.Suspense>
     </>
   );
 };

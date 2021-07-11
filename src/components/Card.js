@@ -17,9 +17,9 @@ const Card = ({ classM, classM2, classM3, header, details, price }) => {
               <div className={`card__picture ${classM2}`}></div>
             </LazyLoad>
 
-            <h4 className='card__header'>
+            <h3 className='card__header'>
               <span className={`card__header--span ${classM3}`}>{header}</span>
-            </h4>
+            </h3>
 
             <div className='card__details'>
               <ul>
