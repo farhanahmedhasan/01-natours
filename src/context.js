@@ -8,15 +8,6 @@ const AppProvider = (children) => {
 
   const value = [state, dispatch];
 
-  useEffect(() => {
-    const slider = setInterval(() => {
-      dispatch({ type: 'NEXT_SLIDE' });
-    }, 8000);
-    return () => {
-      clearInterval(slider);
-    };
-  }, []);
-
   return <AppContext.Provider value={value} {...children} />;
 };
 
