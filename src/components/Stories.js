@@ -1,5 +1,7 @@
 import React from 'react';
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
+import LazyLoad from 'react-lazyload';
+
 import Story from './Story';
 
 import { useGlobalContext } from '../context';
@@ -13,11 +15,13 @@ const Stories = () => {
   return React.useMemo(() => {
     return (
       <section className='stories' id='section-stories'>
-        <React.Suspense
-          fallback={<div style={{ visibility: 'hidden', backgroundColor: '#fff' }}>'loading..</div>}
-        >
-          <LoadVideo />
-        </React.Suspense>
+        <LazyLoad offset={500}>
+          <React.Suspense
+            fallback={<div style={{ visibility: 'hidden', backgroundColor: '#fff' }}>'loading..</div>}
+          >
+            <LoadVideo />
+          </React.Suspense>
+        </LazyLoad>
 
         <div className='slider'>
           <div className='center-text mb-big'>
