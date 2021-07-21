@@ -8,15 +8,13 @@ import LazyLoad from 'react-lazyload';
 
 const Footer = () => {
   return (
-    <>
+    <LazyLoad height={400}>
       <footer className='footer'>
         <div className='footer__logoBox center-text mb-mid'>
-          <LazyLoad>
-            <picture className='footer__logo'>
-              <source srcSet={`${logoSm1x} 1x, ${logoSm2x} 2x`} media='(max-width: 37.5em)' />
-              <img srcSet={`${logo} 1x, ${logo2x} 2x`} alt='Natour logo' src={logo2x} />
-            </picture>
-          </LazyLoad>
+          <picture className='footer__logo'>
+            <source srcSet={`${logoSm1x} 1x, ${logoSm2x} 2x`} media='(max-width: 37.5em)' />
+            <img srcSet={`${logo} 1x, ${logo2x} 2x`} alt='Natour logo' src={logo2x} />
+          </picture>
         </div>
         <div className='row'>
           <div className='col-6'>
@@ -68,7 +66,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-    </>
+    </LazyLoad>
   );
 };
 

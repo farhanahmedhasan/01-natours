@@ -23,7 +23,7 @@ function App() {
         <Booking />
       </main>
       <Footer />
-      <React.Suspense fallback={<div style={{ display: 'none' }}>Loading...</div>}>
+      <React.Suspense fallback={<div>Loading...</div>}>
         <Popup />
       </React.Suspense>
     </>

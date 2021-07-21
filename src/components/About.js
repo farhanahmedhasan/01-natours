@@ -7,9 +7,16 @@ import compositionP1small from '../img/nat-1.jpg';
 import compositionP2small from '../img/nat-2.jpg';
 import compositionP3small from '../img/nat-3.jpg';
 
+import PlaceHolderImg from './PlaceHolderImg';
 import LazyLoad from 'react-lazyload';
 
 const About = () => {
+  const placeholderRef = React.useRef();
+
+  const removePlaceholder = () => {
+    placeholderRef.current.remove();
+  };
+
   return (
     <section id='section-about' className='about'>
       <div className='center-text mb-big'>
@@ -38,24 +45,29 @@ const About = () => {
 
         <div className='col-6'>
           <div className='composition'>
-            <LazyLoad offset={200}>
-              <picture>
+            <PlaceHolderImg Reffer={placeholderRef} />
+            <LazyLoad offset={-200}>
+              <picture onLoad={removePlaceholder}>
                 <source
                   srcSet={`${compositionP1small} 1x, ${compositionP1} 2x`}
                   media='(max-width: 37.5em)'
                 />
                 <img src={compositionP1} alt='photo1' className='composition__photo composition__photo--1' />
               </picture>
+            </LazyLoad>
 
-              <picture>
+            <LazyLoad offset={-200}>
+              <picture onLoad={removePlaceholder}>
                 <source
                   srcSet={`${compositionP2small} 1x, ${compositionP2} 2x`}
                   media='(max-width: 37.5em)'
                 />
                 <img src={compositionP2} alt='photo2' className='composition__photo composition__photo--2' />
               </picture>
+            </LazyLoad>
 
-              <picture>
+            <LazyLoad offset={-200}>
+              <picture onLoad={removePlaceholder}>
                 <source
                   srcSet={`${compositionP3small} 1x, ${compositionP3} 2x`}
                   media='(max-width: 37.5em)'

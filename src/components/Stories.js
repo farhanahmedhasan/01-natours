@@ -14,34 +14,34 @@ const Stories = () => {
 
   return React.useMemo(() => {
     return (
-      <section className='stories' id='section-stories'>
-        <LazyLoad offset={500}>
+      <LazyLoad offset={500}>
+        <section className='stories' id='section-stories'>
           <React.Suspense
             fallback={<div style={{ visibility: 'hidden', backgroundColor: '#fff' }}>'loading..</div>}
           >
             <LoadVideo />
           </React.Suspense>
-        </LazyLoad>
 
-        <div className='slider'>
-          <div className='center-text mb-big'>
-            <h2 className='heading-secondary'>We make people genuinely happy</h2>
-          </div>
-          <div className='row'>
-            {state.slide.map((data, personIndex) => {
-              const { id } = data;
-              return <Story key={id} {...data} personIndex={personIndex} />;
-            })}
-          </div>
+          <div className='slider'>
+            <div className='center-text mb-big'>
+              <h2 className='heading-secondary'>We make people genuinely happy</h2>
+            </div>
+            <div className='row'>
+              {state.slide.map((data, personIndex) => {
+                const { id } = data;
+                return <Story key={id} {...data} personIndex={personIndex} />;
+              })}
+            </div>
 
-          <button className='btnPrev' onClick={() => goPrevSlide(dispatch)}>
-            <FiChevronLeft />
-          </button>
-          <button className='btnNext' onClick={() => goNextSlide(dispatch)}>
-            <FiChevronRight />
-          </button>
-        </div>
-      </section>
+            <button className='btnPrev' onClick={() => goPrevSlide(dispatch)}>
+              <FiChevronLeft />
+            </button>
+            <button className='btnNext' onClick={() => goNextSlide(dispatch)}>
+              <FiChevronRight />
+            </button>
+          </div>
+        </section>
+      </LazyLoad>
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.slide]);
